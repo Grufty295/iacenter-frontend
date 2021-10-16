@@ -1,0 +1,110 @@
+<p-card class="text-center">
+  <ng-template pTemplate="header">
+    <h1 class="text-5xl py-3">SignUp</h1>
+  </ng-template>
+
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="login()"
+    class="p-fluid px-5"
+    autocomplete="off"
+  >
+    <span class="sm:w-9 mb-5 mx-auto p-float-label text-left">
+      <input
+        id="name"
+        type="text"
+        pInputText
+        class="p-inputtext-lg"
+        formControlName="name"
+        [ngClass]="{ 'ng-invalid': registerForm.get('name')?.invalid }"
+      />
+      <label for="name">User name</label>
+      <small
+        *ngIf="
+          registerForm.get('name')!.invalid &&
+          registerForm.get('name')!.touched &&
+          registerForm.get('name')!.dirty
+        "
+        class="p-error"
+      >
+        Invalid user name
+      </small>
+    </span>
+    <span class="sm:w-9 mb-5 mx-auto p-float-label text-left">
+      <input
+        id="email"
+        type="text"
+        pInputText
+        class="p-inputtext-lg"
+        formControlName="email"
+        [ngClass]="{ 'ng-invalid': registerForm.get('email')?.invalid }"
+      />
+      <label for="email">Email</label>
+      <small
+        *ngIf="
+          registerForm.get('email')!.invalid &&
+          registerForm.get('email')!.touched &&
+          registerForm.get('email')!.dirty
+        "
+        class="p-error"
+      >
+        Invalid email
+      </small>
+    </span>
+    <span class="sm:w-9 mb-5 mx-auto p-float-label text-left">
+      <input
+        id="lastname1"
+        type="password"
+        pInputText
+        class="p-inputtext-lg"
+        formControlName="password"
+        [ngClass]="{ 'ng-invalid': registerForm.get('password')!.invalid }"
+      />
+      <label for="lastname1">Password</label>
+      <small
+        *ngIf="
+          registerForm.get('password')!.invalid &&
+          registerForm.get('password')!.touched &&
+          registerForm.get('password')!.dirty
+        "
+        class="p-error"
+      >
+        Invalid password must be at least 8 characters
+      </small>
+    </span>
+
+    <div class="formgroup-inline">
+      <div class="field-radiobutton">
+        <p-radioButton
+          class="p-element"
+          name="role"
+          value="USER_ROLE"
+          formControlName="role"
+          label="User"
+        ></p-radioButton>
+      </div>
+
+      <div class="field-radiobutton">
+        <p-radioButton
+          class="p-element"
+          name="role"
+          value="ADMIN_ROLE"
+          formControlName="role"
+          label="Admin"
+        ></p-radioButton>
+      </div>
+    </div>
+
+    <button
+      pButton
+      type="submit"
+      label="Submit"
+      class="my-1"
+      [disabled]="registerForm.invalid"
+    ></button>
+  </form>
+  <p-divider> </p-divider>
+  <div class="p-fluid px-5">
+    <a id="redirectToSignup" routerLink="/auth/login">Or, LogIn</a>
+  </div>
+</p-card>

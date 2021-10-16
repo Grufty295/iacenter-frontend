@@ -1,0 +1,9 @@
+header {
+  background-color: var(--surface-card);
+
+  > #brand {
+    > i {
+      font-size: inherit;
+    }
+  }
+}
