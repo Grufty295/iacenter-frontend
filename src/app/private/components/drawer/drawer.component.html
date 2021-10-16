@@ -1,3 +1,10 @@
-<p-sidebar [visible]="true" position="left" [modal]="false" class="">
+<p-sidebar
+  [visible]="toggle"
+  (onHide)="closeSidebar()"
+  position="left"
+  [modal]="false"
+  [transitionOptions]="'300ms'"
+  class=""
+>
   content
 </p-sidebar>
