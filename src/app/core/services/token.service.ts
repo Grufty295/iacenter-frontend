@@ -45,6 +45,7 @@ export class TokenService {
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
+      window.sessionStorage.removeItem(USER_KEY);
       return JSON.parse(user);
     }
 

@@ -23,8 +23,7 @@ export class LoginFormComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private messageService: MessageService,
-    private tokenService: TokenService
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -45,13 +44,7 @@ export class LoginFormComponent implements OnInit {
     const { email, password } = this.loginForm.value;
 
     this.authService.login(email, password).subscribe(
-      (data) => {
-        this.tokenService.saveUser(data.user);
-        this.tokenService.saveToken(data.token);
-        this.tokenService.saveRefreshToken(data.refreshToken);
-
-        this.router.navigate(['/dashboard/gallery']);
-      },
+      () => {},
       (err) => {
         this.messageService.add({
           severity: 'error',

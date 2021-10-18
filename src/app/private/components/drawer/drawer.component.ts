@@ -1,10 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { ToggleSidebarService } from '../../../core/utils/toggle-sidebar.service';
 
-import { MenuItem } from 'primeng/api';
+import {
+  ConfirmationService,
+  ConfirmEventType,
+  MenuItem,
+  MessageService,
+} from 'primeng/api';
+
 import { AuthService } from '../../../core/auth/auth.service';
+
 import { Roles } from '../../../core/models/roles.enum';
 
 @Component({
@@ -17,12 +23,15 @@ export class DrawerComponent implements OnInit {
 
   items!: MenuItem[];
 
+  sidebar = document.querySelector('p-sidebar-mask');
+
   user: boolean = true;
 
   constructor(
-    private router: Router,
+    private authService: AuthService,
+    private confirmationService: ConfirmationService,
     private toggleSidebarService: ToggleSidebarService,
-    private authService: AuthService
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +78,29 @@ export class DrawerComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    this.closeSidebar();
+
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to LogOut?',
+      header: 'LogOut Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'You have accepted',
+          detail: 'Logged Out successfully',
+        });
+        setTimeout(() => {
+          this.authService.logout();
+        }, 1000);
+      },
+      reject: () => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Rejected',
+          detail: 'You have rejected to Log Out',
+        });
+      },
+    });
   }
 }

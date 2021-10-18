@@ -2,6 +2,7 @@ import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IUser } from '../models/user';
 import { TokenService } from '../services/token.service';
@@ -36,32 +37,56 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'login',
-      {
-        email,
-        password,
-      },
-      httpOptions
-    );
+    return this.http
+      .post<IUser>(
+        AUTH_API + 'login',
+        {
+          email,
+          password,
+        },
+        httpOptions
+      )
+      .pipe(
+        map((data) => {
+          const { id, name, role } = data;
+          this.userSubject.next({ id, name, role });
+          this.tokenService.saveUser(data);
+          this.tokenService.saveToken(data.token!);
+          this.tokenService.saveRefreshToken(data.refreshToken!);
+
+          this.router.navigate(['/dashboard/gallery']);
+        })
+      );
   }
 
   register(
-    username: string,
+    name: string,
     email: string,
     password: string,
     role: string
   ): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'signup',
-      {
-        username,
-        email,
-        password,
-        role,
-      },
-      httpOptions
-    );
+    return this.http
+      .post<IUser>(
+        AUTH_API + 'signup',
+        {
+          name,
+          email,
+          password,
+          role,
+        },
+        httpOptions
+      )
+      .pipe(
+        map((data) => {
+          const { id, name, role } = data;
+          this.userSubject.next({ id, name, role });
+          this.tokenService.saveUser(data);
+          this.tokenService.saveToken(data.token!);
+          this.tokenService.saveRefreshToken(data.refreshToken!);
+
+          this.router.navigate(['/dashboard/gallery']);
+        })
+      );
   }
 
   renew(token: string) {

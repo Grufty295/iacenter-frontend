@@ -11,6 +11,8 @@ export class AuthGuard implements CanActivateChild, CanLoad {
 
   canActivateChild(): Observable<boolean> | boolean {
     const user = this.authService.userValue;
+    console.log(user);
+
     if (user) {
       return true;
     }

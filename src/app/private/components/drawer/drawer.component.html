@@ -1,17 +1,20 @@
 <p-sidebar
+  id="sidebar"
   [visible]="toggle"
   (onHide)="closeSidebar()"
   position="left"
   [modal]="false"
+  [dismissible]="false"
   [transitionOptions]="'300ms'"
 >
   <div class="h-full flex flex-column justify-content-between">
     <p-menu [model]="items"></p-menu>
     <p-button
-      label="LogOut"
+      label="Log Out"
       icon="pi pi-sign-out"
       class="p-fluid mb-6"
       (onClick)="logout()"
     ></p-button>
   </div>
 </p-sidebar>
+<p-confirmDialog></p-confirmDialog>

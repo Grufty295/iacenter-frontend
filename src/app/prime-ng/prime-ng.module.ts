@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenuModule } from 'primeng/menu';
@@ -10,10 +11,12 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ToastModule } from 'primeng/toast';
 
 import { MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 @NgModule({
   exports: [
     ButtonModule,
     CardModule,
+    ConfirmDialogModule,
     DividerModule,
     InputTextModule,
     RadioButtonModule,
@@ -21,6 +24,6 @@ import { MessageService } from 'primeng/api';
     MenuModule,
     ToastModule,
   ],
-  providers: [MessageService],
+  providers: [ConfirmationService, MessageService],
 })
 export class PrimeNgModule {}

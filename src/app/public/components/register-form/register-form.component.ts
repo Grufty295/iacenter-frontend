@@ -7,6 +7,10 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { AuthService } from 'src/app/core/auth/auth.service';
+import { MessageService } from 'primeng/api';
+import { TokenService } from 'src/app/core/services/token.service';
+
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',
@@ -15,7 +19,11 @@ import { Router } from '@angular/router';
 export class RegisterFormComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.createFormGroup();
@@ -33,11 +41,18 @@ export class RegisterFormComponent implements OnInit {
     });
   }
 
-  login() {
+  signup() {
     const { name, email, password, role } = this.registerForm.value;
 
-    console.log(name, email, password, role);
-
-    this.router.navigateByUrl('/dashboard');
+    this.authService.register(name, email, password, role).subscribe(
+      () => {},
+      (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: err.error,
+        });
+      }
+    );
   }
 }
