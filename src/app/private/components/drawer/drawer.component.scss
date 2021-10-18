@@ -1,1 +1,16 @@
-
+:host ::ng-deep {
+  & .p-sidebar {
+    &-left {
+      max-height: 100vh;
+    }
+    &-content {
+      height: 100%;
+    }
+  }
+  & .p-menu {
+    width: 100%;
+  }
+  & .p-menuitem-link-active {
+    background-color: var(--primary-color);
+  }
+}

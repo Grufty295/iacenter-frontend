@@ -1,8 +1,5 @@
 <app-header></app-header>
 <app-drawer [toggle]="(toggleSidebar | async) || false"></app-drawer>
-<div
-  class="h-screen p-6 pt-7"
-  [ngClass]="{ 'sidebar-active': (toggleSidebar | async) || false }"
->
+<div class="h-screen p-6 pt-7">
   <router-outlet></router-outlet>
 </div>
