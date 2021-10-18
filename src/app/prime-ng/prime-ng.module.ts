@@ -4,10 +4,12 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
+import { MenuModule } from 'primeng/menu';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { SidebarModule } from 'primeng/sidebar';
-import { MenuModule } from 'primeng/menu';
-import { MenuItem } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+
+import { MessageService } from 'primeng/api';
 @NgModule({
   exports: [
     ButtonModule,
@@ -17,6 +19,8 @@ import { MenuItem } from 'primeng/api';
     RadioButtonModule,
     SidebarModule,
     MenuModule,
+    ToastModule,
   ],
+  providers: [MessageService],
 })
 export class PrimeNgModule {}

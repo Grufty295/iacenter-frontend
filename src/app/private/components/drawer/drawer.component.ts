@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ToggleSidebarService } from '../../../core/utils/toggle-sidebar.service';
 
 import { MenuItem } from 'primeng/api';
+import { AuthService } from '../../../core/auth/auth.service';
+import { Roles } from '../../../core/models/roles.enum';
 
 @Component({
   selector: 'app-drawer',
@@ -18,8 +20,9 @@ export class DrawerComponent implements OnInit {
   user: boolean = true;
 
   constructor(
+    private router: Router,
     private toggleSidebarService: ToggleSidebarService,
-    private router: Router
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +37,7 @@ export class DrawerComponent implements OnInit {
             routerLinkActiveOptions: { exact: true },
           },
         ],
-        visible: this.user,
+        visible: this.authService.userValue?.role === Roles.ADMIN_ROLE,
       },
       {
         items: [
@@ -63,5 +66,9 @@ export class DrawerComponent implements OnInit {
 
   closeSidebar() {
     this.toggleSidebarService.setSidebarVisibility(false);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

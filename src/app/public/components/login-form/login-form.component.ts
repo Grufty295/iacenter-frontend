@@ -6,6 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { TokenService } from 'src/app/core/services/token.service';
+
+import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +19,13 @@ import { Router } from '@angular/router';
 export class LoginFormComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private messageService: MessageService,
+    private tokenService: TokenService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.createFormGroup();
@@ -34,7 +44,21 @@ export class LoginFormComponent implements OnInit {
   login() {
     const { email, password } = this.loginForm.value;
 
-    console.log(email, password);
-    this.router.navigateByUrl('/dashboard');
+    this.authService.login(email, password).subscribe(
+      (data) => {
+        this.tokenService.saveUser(data.user);
+        this.tokenService.saveToken(data.token);
+        this.tokenService.saveRefreshToken(data.refreshToken);
+
+        this.router.navigate(['/dashboard/gallery']);
+      },
+      (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: err.error,
+        });
+      }
+    );
   }
 }
