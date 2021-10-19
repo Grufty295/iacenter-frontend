@@ -58,7 +58,16 @@ export class DrawerComponent implements OnInit {
           },
         ],
       },
-
+      {
+        items: [
+          {
+            label: 'Upload',
+            icon: 'pi pi-cloud-upload',
+            routerLink: '/dashboard/upload',
+            routerLinkActiveOptions: { exact: true },
+          },
+        ],
+      },
       {
         items: [
           {

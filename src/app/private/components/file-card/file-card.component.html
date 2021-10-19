@@ -1,12 +1,17 @@
 <p-card
-  [header]="file.originalName"
-  [subheader]="'Uploaded by: ' + file.uploadedBy.name"
+  [subheader]="file.originalName"
+  [header]="'Uploaded by: ' + file.uploadedBy.name"
   [style]="{ width: '320px' }"
   class="p-fluid"
 >
   <ng-template pTemplate="header" [ngSwitch]="file.extension">
     <img
-      *ngSwitchCase="'xlsx'"
+      *ngSwitchCase="'vnd.ms-excel'"
+      alt="xlsx thumbnail"
+      src="assets/images/xls.png"
+    />
+    <img
+      *ngSwitchCase="'vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
       alt="xlsx thumbnail"
       src="assets/images/xls.png"
     />

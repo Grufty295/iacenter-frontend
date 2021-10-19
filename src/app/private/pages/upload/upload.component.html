@@ -1,0 +1,18 @@
+<p-fileUpload
+  name="files[]"
+  [multiple]="true"
+  accept=".png,.jpg,.jpeg,.doc,.docx,.csx,.xls,.xlsx,.pdf"
+  [fileLimit]="12"
+  [url]="apiURL"
+  [headers]="httpHeaders"
+  [customUpload]="true"
+  (uploadHandler)="onUpload($event)"
+>
+  <ng-template pTemplate="content">
+    <ul *ngIf="uploadedFiles.length">
+      <li *ngFor="let file of uploadedFiles">
+        {{ file.name }} - {{ file.size }} bytes
+      </li>
+    </ul>
+  </ng-template>
+</p-fileUpload>
