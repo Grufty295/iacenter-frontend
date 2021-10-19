@@ -1,0 +1,44 @@
+<p-card
+  [header]="file.originalName"
+  [subheader]="'Uploaded by: ' + file.uploadedBy.name"
+  [style]="{ width: '320px' }"
+  class="p-fluid"
+>
+  <ng-template pTemplate="header" [ngSwitch]="file.extension">
+    <img
+      *ngSwitchCase="'xlsx'"
+      alt="xlsx thumbnail"
+      src="assets/images/xls.png"
+    />
+    <img
+      *ngSwitchCase="
+        'vnd.openxmlformats-officedocument.wordprocessingml.document'
+      "
+      alt="docx thumbnail"
+      src="assets/images/doc.png"
+    />
+    <img
+      *ngSwitchCase="'msword'"
+      alt="doc thumbnail"
+      src="assets/images/doc.png"
+    />
+    <img
+      *ngSwitchCase="'csv'"
+      alt="csv thumbnail"
+      src="assets/images/csv.png"
+    />
+    <img
+      *ngSwitchCase="'pdf'"
+      alt="pdf thumbnail"
+      src="assets/images/pdf.png"
+    />
+  </ng-template>
+
+  <a
+    pButton
+    label="Download"
+    icon="pi pi-download"
+    [href]="'http:localhost:8080/' + file.path"
+    download
+  ></a>
+</p-card>
