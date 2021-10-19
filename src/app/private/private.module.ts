@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { NgxMasonryModule } from 'ngx-masonry';
+
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 import { PrivateRoutingModule } from './private-routing.module';
@@ -18,6 +20,11 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
     UsersComponent,
     GalleryComponent,
   ],
-  imports: [CommonModule, PrivateRoutingModule, PrimeNgModule],
+  imports: [
+    CommonModule,
+    PrivateRoutingModule,
+    PrimeNgModule,
+    NgxMasonryModule,
+  ],
 })
 export class PrivateModule {}

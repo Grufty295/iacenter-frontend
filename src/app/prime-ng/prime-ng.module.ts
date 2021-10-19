@@ -5,6 +5,7 @@ import { CardModule } from 'primeng/card';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
+import { ImageModule } from 'primeng/image';
 import { MenuModule } from 'primeng/menu';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { SidebarModule } from 'primeng/sidebar';
@@ -19,6 +20,7 @@ import { ConfirmationService } from 'primeng/api';
     ConfirmDialogModule,
     DividerModule,
     InputTextModule,
+    ImageModule,
     RadioButtonModule,
     SidebarModule,
     MenuModule,

@@ -1,1 +1,23 @@
-<p>gallery works!</p>
+<ngx-masonry
+  [options]="masonryOptions"
+  style="width: 100%"
+  [ordered]="true"
+  (itemsLoaded)="itemsLoaded()"
+  class="z-3"
+>
+  <!-- <ngxMasonryItem
+    *ngFor="let image of masonryImages; index as idx"
+    class="masonry-item"
+    style="z-index: 0"
+  > -->
+  <p-image
+    *ngFor="let image of masonryImages; let i = index"
+    ngxMasonryItem
+    [preview]="true"
+    [src]="image"
+    class="masonry-item"
+    [class.active-masonry-item]="selectedIndex === i"
+    (click)="setIndex(i)"
+  ></p-image>
+  <!-- </ngxMasonryItem> -->
+</ngx-masonry>

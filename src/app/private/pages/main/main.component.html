@@ -1,6 +1,6 @@
 <app-header></app-header>
 <app-drawer [toggle]="(toggleSidebar | async) || false"></app-drawer>
-<div class="h-screen p-6 pt-7">
+<div class="h-screen p-4 pt-7 sm:p-6 sm:pt-7">
   <router-outlet></router-outlet>
 </div>
 <p-toast [breakpoints]="{ '577px': { width: '80%' } }"></p-toast>
