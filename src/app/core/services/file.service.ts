@@ -32,13 +32,9 @@ export class FileService {
   addFiles(files: any[] = []) {
     const formData: FormData = new FormData();
 
-    console.log(files);
-
     files.forEach((file) => {
       formData.append('files', file, file.name);
     });
-
-    console.log(formData.getAll('files'));
 
     return this.http.post(`${this.FILE_API}/upload`, formData, {
       headers: {

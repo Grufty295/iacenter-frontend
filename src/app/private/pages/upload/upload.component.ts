@@ -43,13 +43,13 @@ export class UploadComponent implements OnInit {
       },
       (err) => {
         console.log(err);
+
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Something went wrong',
+          detail: err.error,
+        });
       }
     );
-
-    // this.messageService.add({
-    //   severity: 'info',
-    //   summary: 'File Uploaded',
-    //   detail: '',
-    // });
   }
 }

@@ -18,7 +18,9 @@ export class GalleryComponent implements OnInit {
 
   @ViewChild(NgxMasonryComponent) masonry!: NgxMasonryComponent;
 
-  public masonryOptions: NgxMasonryOptions = {
+  isLoading: boolean = false;
+
+  masonryOptions: NgxMasonryOptions = {
     gutter: 10,
     horizontalOrder: true,
     columnWidth: 320,
@@ -27,6 +29,7 @@ export class GalleryComponent implements OnInit {
   constructor(private fileService: FileService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.fileService.getFiles().subscribe((files: any) => {
       this.filesDataPagination = files;
 
@@ -34,6 +37,7 @@ export class GalleryComponent implements OnInit {
       this.totalFilePages = this.filesDataPagination.totalPages;
       console.log(this.filesDataPagination);
       console.log('Files list:', this.filesList);
+      this.isLoading = false;
     });
   }
 
@@ -44,25 +48,22 @@ export class GalleryComponent implements OnInit {
   onScroll() {
     console.log('scroll detectado');
     if (this.filesDataPagination.page >= this.totalFilePages) return;
-    // if (this.limit >= this.dummyPictures.length) return;
-
     this.showMoreImages();
   }
 
   showMoreImages() {
+    this.isLoading = true;
     this.filesDataPagination.page += 1;
-    // this.limit += 15;
-    // this.masonryImages = this.dummyPictures.slice(0, this.limit);
     this.fileService
       .getFiles(this.filesDataPagination.page)
       .subscribe((files: any) => {
         this.filesList.push(...files.filesList);
         console.log('Files list:', this.filesList);
+        this.isLoading = false;
       });
   }
 
   insertImage() {
-    // this.masonryImages.splice(0, 0, this.dummyPictures[0]);
     this.masonry.reloadItems();
     this.masonry.layout();
   }

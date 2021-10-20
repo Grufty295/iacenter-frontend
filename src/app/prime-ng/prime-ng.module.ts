@@ -8,6 +8,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { ImageModule } from 'primeng/image';
 import { MenuModule } from 'primeng/menu';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { SidebarModule } from 'primeng/sidebar';
 import { ToastModule } from 'primeng/toast';
@@ -23,9 +24,10 @@ import { ConfirmationService } from 'primeng/api';
     FileUploadModule,
     InputTextModule,
     ImageModule,
-    RadioButtonModule,
-    SidebarModule,
     MenuModule,
+    ProgressSpinnerModule,
+    SidebarModule,
+    RadioButtonModule,
     ToastModule,
   ],
   providers: [ConfirmationService, MessageService],

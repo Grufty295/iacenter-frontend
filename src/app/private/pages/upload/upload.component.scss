@@ -2,4 +2,14 @@
   .p-fileupload {
     margin-top: 3rem;
   }
+
+  @media (max-width: 556px) {
+    .p-fileupload-buttonbar .p-button {
+      margin-right: 0;
+      padding: 0.5rem;
+    }
+    .p-fileupload-row > div:first-child {
+      display: none;
+    }
+  }
 }

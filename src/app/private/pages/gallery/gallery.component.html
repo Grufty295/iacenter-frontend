@@ -36,14 +36,7 @@
       </ng-container>
     </ng-template>
   </ngxMasonryItem>
-
-  <!-- <p-image
-    *ngFor="let image of masonryImages; let i = index"
-    ngxMasonryItem
-    [preview]="true"
-    [src]="image"
-    class="masonry-item"
-    [class.active-masonry-item]="selectedIndex === i"
-    (click)="setIndex(i)"
-  ></p-image> -->
 </ngx-masonry>
+<div class="loading-spinner" *ngIf="isLoading">
+  <p-progressSpinner strokeWidth="10"></p-progressSpinner>
+</div>
