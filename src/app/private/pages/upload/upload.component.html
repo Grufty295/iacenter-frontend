@@ -6,16 +6,8 @@
   [customUpload]="true"
   (uploadHandler)="onUpload($event)"
 >
-  <!-- <ng-template let-file pTemplate="file">
-    <ul *ngIf="uploadedFiles.length">
-      <li *ngFor="let file of uploadedFiles">
-        {{ file.name }} - {{ file.size }} bytes
-      </li>
-    </ul>
-  </ng-template> -->
-
   <ng-template pTemplate="content">
-    <ul *ngIf="uploadedFiles.length">
+    <ul class="ml-4" *ngIf="uploadedFiles.length">
       <li *ngFor="let file of uploadedFiles">
         {{ file.name }} - {{ file.size }} bytes
       </li>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxMasonryModule } from 'ngx-masonry';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -27,6 +28,7 @@ import { UploadComponent } from './pages/upload/upload.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     PrivateRoutingModule,
     PrimeNgModule,
     NgxMasonryModule,

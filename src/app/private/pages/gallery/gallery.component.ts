@@ -35,8 +35,6 @@ export class GalleryComponent implements OnInit {
 
       this.filesList = files.filesList;
       this.totalFilePages = this.filesDataPagination.totalPages;
-      console.log(this.filesDataPagination);
-      console.log('Files list:', this.filesList);
       this.isLoading = false;
     });
   }

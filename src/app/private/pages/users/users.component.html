@@ -1,1 +1,105 @@
-<p>users works!</p>
+<p-table
+  #dt
+  class="pt-4"
+  [value]="usersList"
+  responsiveLayout="stack"
+  dataKey="email"
+  [lazy]="true"
+  (onLazyLoad)="loadUsers($event)"
+  styleClass="p-datatable-striped"
+  [totalRecords]="usersDataPagination.userCount"
+  [rows]="5"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[5, 10, 25, 50]"
+  [loading]="loading"
+  [paginator]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [filterDelay]="400"
+>
+  <ng-template pTemplate="caption" class="text-xl">
+    <p-toolbar class="mb-4">
+      <ng-template pTemplate="left">
+        <button
+          pButton
+          label="New"
+          icon="pi pi-plus"
+          class="p-button-success p-mr-2"
+        ></button>
+      </ng-template>
+
+      <ng-template pTemplate="right">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            placeholder="Search..."
+            name="filter"
+            (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+          />
+        </span>
+      </ng-template>
+    </p-toolbar>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="name">
+        <div class="p-d-flex p-jc-between p-ai-center">
+          User name
+          <p-sortIcon field="name"></p-sortIcon>
+        </div>
+      </th>
+      <th pSortableColumn="email">
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Email
+          <p-sortIcon field="email"></p-sortIcon>
+        </div>
+      </th>
+      <th pSortableColumn="role">
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Role
+          <p-sortIcon field="role"></p-sortIcon>
+        </div>
+      </th>
+      <th pSortableColumn="createdAt">
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Created At
+          <p-sortIcon field="createdAt"></p-sortIcon>
+        </div>
+      </th>
+      <th style="width: 8rem"></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-user>
+    <tr class="p-selectable-row">
+      <td>
+        <span class="p-column-title">Name</span>
+        {{ user.name }}
+      </td>
+      <td>
+        <span class="p-column-title">Email</span>
+        <span class="image-text">{{ user.email }}</span>
+      </td>
+      <td>
+        <span class="p-column-title">role</span>
+        <span class="image-text">{{ user.role }}</span>
+      </td>
+      <td>
+        <span class="p-column-title">Created at</span>
+        {{ user.createdAt | date: "MM/dd/yyyy" }}
+      </td>
+      <td style="text-align: center">
+        <button
+          pButton
+          icon="pi pi-pencil"
+          class="p-button-rounded p-button-warning mr-2"
+        ></button>
+        <button
+          pButton
+          icon="pi pi-trash"
+          class="p-button-rounded p-button-danger"
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
