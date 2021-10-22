@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IFile } from '../../../core/models/file';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-file-card',
@@ -8,6 +9,8 @@ import { IFile } from '../../../core/models/file';
 })
 export class FileCardComponent implements OnInit {
   @Input() file!: IFile;
+
+  apiURI = environment.apiBaseUrl;
 
   constructor() {}
 

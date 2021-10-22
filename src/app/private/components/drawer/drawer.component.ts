@@ -2,12 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { ToggleSidebarService } from '../../../core/utils/toggle-sidebar.service';
 
-import {
-  ConfirmationService,
-  ConfirmEventType,
-  MenuItem,
-  MessageService,
-} from 'primeng/api';
+import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 
 import { AuthService } from '../../../core/auth/auth.service';
 
@@ -22,8 +17,6 @@ export class DrawerComponent implements OnInit {
   @Input() toggle: boolean = false;
 
   items!: MenuItem[];
-
-  sidebar = document.querySelector('p-sidebar-mask');
 
   user: boolean = true;
 
@@ -65,17 +58,6 @@ export class DrawerComponent implements OnInit {
             icon: 'pi pi-cloud-upload',
             routerLink: '/dashboard/upload',
             routerLinkActiveOptions: { exact: true },
-          },
-        ],
-      },
-      {
-        items: [
-          {
-            label: 'Edit Profile',
-            icon: 'pi pi-cog',
-            command: () => {
-              this.closeSidebar();
-            },
           },
         ],
       },

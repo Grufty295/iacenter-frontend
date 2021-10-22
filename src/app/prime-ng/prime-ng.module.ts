@@ -16,8 +16,10 @@ import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
 
-import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
+
 @NgModule({
   exports: [
     ButtonModule,
@@ -29,13 +31,13 @@ import { ConfirmationService } from 'primeng/api';
     ImageModule,
     MenuModule,
     MultiSelectModule,
-    ProgressSpinnerModule,
-    SidebarModule,
     RadioButtonModule,
+    SidebarModule,
+    ProgressSpinnerModule,
     ToastModule,
     TableModule,
     ToolbarModule,
   ],
-  providers: [ConfirmationService, MessageService],
+  providers: [ConfirmationService, DialogService, MessageService],
 })
 export class PrimeNgModule {}

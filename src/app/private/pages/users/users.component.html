@@ -24,6 +24,7 @@
           label="New"
           icon="pi pi-plus"
           class="p-button-success p-mr-2"
+          (click)="openAddUser()"
         ></button>
       </ng-template>
 
@@ -91,11 +92,13 @@
       <td style="text-align: center">
         <button
           pButton
+          (click)="openEditUser(user)"
           icon="pi pi-pencil"
           class="p-button-rounded p-button-warning mr-2"
         ></button>
         <button
           pButton
+          (click)="openDeleteUser(user)"
           icon="pi pi-trash"
           class="p-button-rounded p-button-danger"
         ></button>

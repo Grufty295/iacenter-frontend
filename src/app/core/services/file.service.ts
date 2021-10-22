@@ -19,13 +19,8 @@ export class FileService {
   constructor(private tokenService: TokenService, private http: HttpClient) {}
 
   getFiles(page: number = 1) {
-    let params = new HttpParams();
-
-    params.append('page', page);
-
-    return this.http.get(this.FILE_API, {
+    return this.http.get(`${this.FILE_API}?page=${page}`, {
       ...this.httpAuthoredOptions,
-      params: params,
     });
   }
 

@@ -89,11 +89,16 @@ export class AuthService {
       );
   }
 
-  renew(token: string) {
+  renew(refreshToken: string) {
     return this.http.post(
       AUTH_API + 'renew',
       {},
-      { headers: { 'Content-Type': 'application/json', refreshtoken: token } }
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          refreshtoken: refreshToken,
+        },
+      }
     );
   }
 

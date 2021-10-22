@@ -25,11 +25,13 @@
     <ng-template #thenTemplate>
       <p-image
         [preview]="true"
-        [src]="'http://localhost:8080/' + file.path"
+        [src]="'https://sebastianaudetat.com/' + file.path"
         (onHide)="setIndex(null)"
         (click)="setIndex(i)"
-      ></p-image>
+      >
+      </p-image>
     </ng-template>
+
     <ng-template #elseTemplate>
       <ng-container>
         <app-file-card [file]="file"></app-file-card>

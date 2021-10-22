@@ -1,0 +1,105 @@
+<p-card class="text-center">
+  <ng-template pTemplate="header">
+    <h1 class="sm:text-5xl text-2xl py-3" *ngIf="isAddMode">Add User</h1>
+    <h1 class="sm:text-5xl text-2xl py-3" *ngIf="!isAddMode">Edit User</h1>
+  </ng-template>
+
+  <form
+    [formGroup]="userForm"
+    (ngSubmit)="submit()"
+    class="p-fluid"
+    autocomplete="off"
+  >
+    <span class="sm:w-9 mb-5 mx-auto p-float-label text-left">
+      <input
+        id="name"
+        type="text"
+        pInputText
+        class="p-inputtext-lg"
+        formControlName="name"
+        [ngClass]="{ 'ng-invalid': userForm.get('name')?.invalid }"
+      />
+      <label for="name">name</label>
+      <small
+        *ngIf="
+          userForm.get('name')!.invalid &&
+          userForm.get('name')!.touched &&
+          userForm.get('name')!.dirty
+        "
+        class="p-error"
+      >
+        Invalid name
+      </small>
+    </span>
+    <span class="sm:w-9 mb-5 mx-auto p-float-label text-left">
+      <input
+        id="email"
+        type="text"
+        pInputText
+        class="p-inputtext-lg"
+        formControlName="email"
+        [ngClass]="{ 'ng-invalid': userForm.get('email')?.invalid }"
+      />
+      <label for="email">Email</label>
+      <small
+        *ngIf="
+          userForm.get('email')!.invalid &&
+          userForm.get('email')!.touched &&
+          userForm.get('email')!.dirty
+        "
+        class="p-error"
+      >
+        Invalid email
+      </small>
+    </span>
+    <span class="sm:w-9 mb-5 mx-auto p-float-label text-left">
+      <input
+        id="lastname1"
+        type="password"
+        pInputText
+        class="p-inputtext-lg"
+        formControlName="password"
+        [ngClass]="{ 'ng-invalid': userForm.get('password')!.invalid }"
+      />
+      <label for="lastname1">Password</label>
+      <small
+        *ngIf="
+          userForm.get('password')!.invalid &&
+          userForm.get('password')!.touched &&
+          userForm.get('password')!.dirty
+        "
+        class="p-error"
+      >
+        Invalid password must be at least 8 characters
+      </small>
+    </span>
+    <div class="formgroup-inline">
+      <div class="field-radiobutton">
+        <p-radioButton
+          class="p-element"
+          name="role"
+          value="USER_ROLE"
+          formControlName="role"
+          label="User"
+        ></p-radioButton>
+      </div>
+
+      <div class="field-radiobutton">
+        <p-radioButton
+          class="p-element"
+          name="role"
+          value="ADMIN_ROLE"
+          formControlName="role"
+          label="Admin"
+        ></p-radioButton>
+      </div>
+    </div>
+    <button
+      pButton
+      label="Submit"
+      type="submit"
+      class="my-1"
+      [disabled]="userForm.invalid"
+    ></button>
+  </form>
+</p-card>

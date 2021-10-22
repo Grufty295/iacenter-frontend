@@ -15,6 +15,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { FileCardComponent } from './components/file-card/file-card.component';
 import { UploadComponent } from './pages/upload/upload.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UploadComponent } from './pages/upload/upload.component';
     GalleryComponent,
     FileCardComponent,
     UploadComponent,
+    UserFormComponent,
   ],
   imports: [
     CommonModule,
