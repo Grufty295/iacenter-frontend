@@ -1,27 +1,38 @@
-# IacenterFileupload
+# Filemo 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.1.
+## 📋 Especificaciones del proyecto
 
-## Development server
+_Desarrollo de una web App que permita:_
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Considerar dos tipos de usuarios: Administrador y Usuario.
+* Tanto Administrador como el Usuario pueden registrarse e iniciar sesión.
+* Ingresar a una galeria publica de archivos e imagenes subidas por todos los usuarios.
+* La pantalla de galeria tendra un layout estilo masonry.
+* Tanto Administrador como el Usuario pueden subir archivos de tipo permitido a la galeria publica.
+* Al dar click sobre una imagen de la galeria se desplegara un overlay con un preview de la imagen.
+* Al dar click al boton de download en los archivos de la galeria debera descargarse dicho archivo en la computadora del usuario.
+* Si es Administrador puede ingresar a una tabla con todos los usuarios registrados en la app.
+* El Administrador puede realizar operaciones CRUD sobre los usuarios en la tabla.
+* El Administrador puede consultar sobre la tabla de usuarios en la barra de busqueda por nombre y correo.
 
-## Code scaffolding
+### 🛠️ Construido con:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* [Angular](https://angular.io/) - Framework de JavaScript para construir interfaces de usuario.
+* [ngx-masonry](https://www.npmjs.com/package/ngx-masonry) -  Libería para generar un layout de tipo masonry.
+* [ngx-infinite-scroll](https://www.npmjs.com/package/ngx-infinite-scroll) -  Libería para aplicar el inifinte scroll en la galeria de archivos.
+* [Node.js](https://nodejs.dev/) - Hace referencia al entorno de ejecución de JavaScript utilizado.
+* [Typescript](https://www.typescriptlang.org/) - Superset de Javascript que proporciona un tipado fuerte y funciones de POO.
+* [Multer](https://www.npmjs.com/package/multer) - Paquete de node que permite la manipulación de archivos.
+* [MongoDB](https://www.mongodb.com/) - Base de Datos NoSQL multiplataforma basado en documentos.
+* [PrimeNG](https://www.primefaces.org/primeng/) - Biblioteca que proporciona una gama de componentes listos para usar con Angular.
+* [Sass](https://sass-lang.com/) - Preprocesador CSS que permite generar de forma automática hojas de estilo. 
 
-## Build
+## 💻 Desarrollado por:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* Sebastián Emilio Audetat Facio - [Grufty295](https://github.com/Grufty295)
 
-## Running unit tests
+## 📌 Revisalo en:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* [Documentacion del API](https://documenter.getpostman.com/view/11798944/UV5afbeG) - Con Postman
+* [Frontend](https://filemo-frontend.herokuapp.com) 
+* [Web Server con Backend](https://sebastianaudetat.com/) - El api es consumido en el path "/api/v1/"
