@@ -53,14 +53,11 @@ export class GalleryComponent implements OnInit {
 
   showMoreImages() {
     this.isLoading = true;
-    console.log('pre files', this.filesList);
-    console.log('pre', this.filesDataPagination.page);
     this.filesDataPagination.page += 1;
     this.fileService
       .getFiles(this.filesDataPagination.page)
       .subscribe((files: any) => {
         this.filesList.push(...files.filesList);
-        console.log('post files', this.filesList);
         this.isLoading = false;
       });
   }
